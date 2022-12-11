@@ -36,8 +36,14 @@ $(document).ready(function () {
     futureHour = currentTime.hour() + 1;
 }, 1000);
 
-  $('#saveBtn').addEventListener("click", function(event) {
+var workText = document.getElementsByClassName("saveBtn");
 
+for (var i=0; i<workText.length; i++) {
+  workText[i].addEventListener("click", function(){
+    const row = $(this).closest(".row");
+    var text = row.find(".description").val();
+    var time = row.attr('id');
+    localStorage.setItem(time, text);
   });
-
+}
 });
